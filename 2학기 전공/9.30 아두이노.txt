@@ -1,0 +1,23 @@
+led -> OUTPUT
+switch -> INPUT_PULLUP
+Serial.begin 은 아두이노에 모니터를 연결한다.
+println 은 새로운 줄로 바꿔준다.(출력해주고 다음줄로 바꿈)
+delay(1000) -> 1초 1000은 1초임
+
+더듬이 자율주행
+https://cafe.naver.com/arduinocafe/3587
+
+0.5초간 led켜주고 0.5초간 꺼주는 코딩(led점멸)
+void setup(){
+  pinMode(13,OUTPUT);
+}
+long pm=0;
+int ld=1;
+void loop(){
+long cm=millis();
+if(cm-pm>500){
+  pm=cm;
+  ld = !ld;
+  digitalWrite(13,ld);
+  }
+}

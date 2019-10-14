@@ -1,0 +1,60 @@
+#include<stdio.h>
+int add(int a, int b) {
+return(a + b);
+}
+int main() {
+int a = 2, b = 3;
+printf("%d\n", add(a, b));
+}
+
+#include<stdio.h>
+int add(int a, int b) {
+return a + b;
+}
+int main(){
+int a, b;
+scanf_s("%d %d", &a, &b);
+printf("%d", add(a,b));
+}
+
+#include<stdio.h>
+#include<stlib.h>
+int add(int a, int b); {
+return a + b;
+}
+int main(int c, char* v[]) {
+int a, b;
+a = atoi(v[1]);
+b = atoi(v[2]);
+printf("%d", add(a, b));
+}
+
+/*#include<stdio.h>
+int main() {
+	char c1[6] = "apple";
+	char c2[6] = "kiwi";
+	char c3[6] = "mango";
+	printf("%s\n%s\n%s", c1,c2,c3);
+}*/
+
+#include<stdio.h>
+int main() {
+	const char* c[] = { "apple","kiwi","banana" };
+	printf("%s\n%s\n%s\n", c[0], c[1], c[2]);
+}
+
+#include<stdio.h>
+int main() {
+	const char* c[] = { "apple","kiwi","banana" };
+	int i;
+	for (i = 0; i < 3; i++)
+		printf("%s\n",c[i]);
+}
+
+#include<stdio.h>
+int main(int argc, char* argv[]) {
+	int i;
+	for (i = 0; i < argc; i++) {
+		printf("%s\n", argv[i]);
+	}
+}

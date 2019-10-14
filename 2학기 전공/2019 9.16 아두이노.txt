@@ -1,0 +1,75 @@
+아두이노
+void setup() {
+  Serial.begin(9600);
+
+}
+int a;
+void loop() {
+  Serial.println(++a);
+  if(a>255) a=0;
+  delay(100);
+
+}
+
+프로세싱
+import processing.serial.*;
+Serial p;
+void setup(){
+  size(300,300);
+  p=new Serial(this,"COM4",9600);
+}
+void draw(){
+  if(p.available()>0){
+    String m=p.readString();
+    int a= int(m.trim());
+    println(a);
+  }
+}
+원 그리기
+import processing.serial.*;
+Serial p;
+void setup(){
+  size(300,300);
+  p=new Serial(this,"COM4",9600);
+}
+void draw(){
+  if(p.available()>0){
+    String m=p.readString();
+    int a= int(m.trim());
+    println(a);
+    fill(a*a,a*2,a/2);
+    ellipse(150,150,a,a);
+  }
+}
+
+조도 센서
+void setup() {
+  Serial.begin(9600);
+
+}
+int a;
+void loop() {
+  a = analogRead(A0);
+  Serial.println(++a);
+  if(a>255) a=0;
+  delay(100);
+
+}
+
+프로세싱
+import processing.serial.*;
+Serial p;
+void setup(){
+  size(300,300);
+  p=new Serial(this,"COM4",9600);
+}
+void draw(){
+  if(p.available()>0){
+    String m=p.readString();
+    int a= int(m.trim());
+    println(a);
+    if(a>250) fill(0,255,0);
+    else      fill(255,0,0);
+    ellipse(150,150,a,a);
+  }
+}

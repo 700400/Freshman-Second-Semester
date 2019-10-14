@@ -1,0 +1,19 @@
+cd \
+md anu
+notepad test.c
+dir
+cl test
+test
+notepad main.c
+notepad add.c
+cl/c *.c
+lib /OUT:my.lib add.obj
+link main my.lib
+main
+
+motepad main.c
+motepad add.c
+cl/c *.c
+lib /OUT:my.lib add.obj
+link main my.lib
+main
