@@ -1,0 +1,118 @@
+주사위6000번 던질때 1~6나오는 수를 시뮬레이션
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main() {
+	int h[6] = { 0, };
+	int i,n;
+	srand(time(NULL));
+	for (i = 0; i < 6000; i++) {
+		n = rand() % 6;
+		h[n]++;
+	}
+	for (i = 0; i < 6; i++) {
+		printf("%d\n", h[i]);
+	}
+}
+
+#include<stdio.h>
+int main() {
+	typedef struct user {
+		int age;
+		char name[80];
+	} ANU;
+	ANU we[2] = { 18,"Shim",17,"Kin" };
+	ANU* p;
+	p = we;
+	printf("%d %s\n", p->age, p->name);
+	p++;
+	printf("%d %s\n", p->age, p->name);
+}
+쓰기
+#include<stdio.h>
+int main() {
+	typedef struct user {
+		int age;
+		char name[80];
+	} ANU;
+	ANU we[2] = { 18,"Shim",17,"Kin" };
+	ANU* p;
+	FILE* fp;
+	p = we;
+	printf("%d %s\n", p->age, p->name);
+	p++;
+	printf("%d %s\n", p->age, p->name);
+	fp = fopen("my.bin", "wb");
+	fwrite(we.sizeof(ANU), 2, fp);
+	fclose(fp);
+}
+읽기
+#include<stdio.h>
+int main() {
+	typedef struct user {
+		int age;
+		char name[80];
+	} ANU;
+	ANU we[2] = { 18,"Shim",17,"Kin" };
+	ANU* p;
+	FILE* fp;
+	p = we;
+	printf("%d %s\n", p->age, p->name);
+	p++;
+	printf("%d %s\n", p->age, p->name);
+	fp = fopen("my.bin", "rb");
+	fread(we.sizeof(ANU), 2, fp);
+	fclose(fp);
+}
+
+#include<stdio.h>
+void foo() {
+	static int a ;
+	printf("%d\n", ++a);
+}
+int main() {
+	foo();
+	foo();
+	foo();
+}//static을 붙이면 123 안붙이면 111
+
+swap함수
+#include<stdio.h>
+void swap(int* a,int* b) {
+	int t;
+	t = *a; *a = *b; *b = t;
+}
+int main() {
+	int a = 2, b = 3;
+	swap(&a,&b);
+	printf("%d %d\n", a, b);
+}
+
+정렬(sorting)
+#include<stdio.h>
+void swap(int* a,int* b) {
+	int t;
+	t = *a; *a = *b; *b = t;
+}
+int main() {
+	int a[] = { 3,2,4,5,1 };
+	int i, j;
+	for (i = 0; i < 5; i++) {//5대신 4가능
+		for (j = 0; j < 4; j++) {//4대신 4-i가능
+			if (a[j] > a[j + 1]) {
+				swap(&a[j], &a[j + 1]);
+			}
+		}
+	}
+	for(i=0;i<5;i++)
+	printf("%d", a[i]);
+}
+
+
+주사위600 1~6
+1~100 더함
+정수5개 함수로 최소
+이진파일
+
+
+(int(*your)(int,int),int a,int b)
