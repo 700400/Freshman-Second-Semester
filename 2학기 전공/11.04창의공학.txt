@@ -1,0 +1,52 @@
+HTTP/1.1 OK\r\n
+"Content-length 4\n\n\n\n"
+
+import processing.net.*;
+Server s;
+Client c;
+void setup(){
+  s = new Server(this, 12345);
+}
+int n;
+void draw(){
+  c = s.available();
+  if(c!=null){// get이 오는지 확인 - 휴대폰에서 데이터가 오는지 확인
+    String m = c.readString();
+    if(m.indexOf("GET")==0){
+      print(n++);
+      String me="Hi+"+str(n);
+      c.write("HTTP/1.1 200 OK\r\n"); //윈도우즈는 \n 다른것들은 \r\n해야 한줄 띄움
+      c.write("Content-length: "+me.length()+"\r\n\r\n");
+      c.write(me);
+    }
+  }
+}
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(13,OUTPUT);
+}
+void loop() {
+  if(Serial.available()>0){
+    String m= Serial.readString();
+    if(m.indexOf('0')==0)digitalWrite(13,LOW);
+    if(m.indexOf('1')==0)digitalWrite(13,HIGH);
+  }
+}
+
+
+
+import processing.serial.*;
+import processing.net.*;// 와이파이 사용하려면 넣어야됨
+Serial p;
+void setup(){
+  p= new Serial(this,"COM4",9600);
+  textSize(64);
+}
+void draw(){}
+void keyPressed(){
+  background(0);
+  p.write(key);
+  text(key,10,60);
+}
